@@ -1,0 +1,19 @@
+.page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: transform 1s ease-in-out;
+    color: #0eb8c4;
+    cursor: pointer;
+  }
+  
+.textRotate {
+  transform: rotate(360deg);
+}
+
+.container {
+  
+}
+  
