@@ -2,7 +2,6 @@
 
 import styled from 'styled-components';
 import Chat from '../Chat/Chat';
-import Input from '../components/Input';
 import Header from '../Header/Header';
 import Sider from '../Sider/Sider';
 import { ILayoutProps } from './types';
@@ -18,10 +17,7 @@ const Layout = ({ children }: ILayoutProps) => {
       <Header />
       <Content>
         <Sider />
-        <Chat>
-          {children}
-          <Input />
-        </Chat>
+        <Chat>{children}</Chat>
       </Content>
     </>
   );

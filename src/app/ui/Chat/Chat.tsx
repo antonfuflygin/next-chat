@@ -1,6 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
+import Input from '../components/Input';
 import { IChatProps } from './types';
 
 const ChatContent = styled.main`
@@ -8,7 +9,12 @@ const ChatContent = styled.main`
 `;
 
 const Chat = ({ children }: IChatProps) => {
-  return <ChatContent>{children}</ChatContent>;
+  return (
+    <ChatContent>
+      {children}
+      <Input />
+    </ChatContent>
+  );
 };
 
 export default Chat;
