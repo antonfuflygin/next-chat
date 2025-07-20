@@ -17,6 +17,7 @@ const InputWrapper = styled.div`
 const StyledInput = styled.input`
   flex: 1;
   border: none;
+  padding: 12px 8px;
   outline: none;
   font-size: 15px;
   background-color: transparent;
@@ -35,7 +36,7 @@ const IconsWrapper = styled.div`
 const IconButton = styled.button`
   background: transparent;
   border: none;
-  padding: 4px;
+  padding: 5px;
   cursor: pointer;
   color: #444;
 
@@ -47,32 +48,39 @@ const IconButton = styled.button`
 const SendButton = styled(IconButton)`
   color: white;
   border-radius: 50%;
-  padding: 6px;
+  padding: 5px;
 `;
 
-const Input: React.FC = () => {
+const MessangeInput: React.FC = () => {
   const [value, setValue] = useState<string>('');
 
   const handleOfChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-    console.log(e.target.value);
   };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(value);
+  };
+
   return (
-    <InputWrapper>
-      <StyledInput type="text" value={value} onChange={handleOfChange} placeholder="Напишите текст..." />
-      <IconsWrapper>
-        <IconButton>
-          <Image src="paperclip.svg" width={25} height={25} alt="paperclip" />
-        </IconButton>
-        <IconButton>
-          <Image src="audio.svg" width={25} height={25} alt="audio" />
-        </IconButton>
-        <SendButton>
-          <Image src="submit.svg" width={30} height={30} alt="submit" />
-        </SendButton>
-      </IconsWrapper>
-    </InputWrapper>
+    <form onSubmit={handleSubmit}>
+      <InputWrapper>
+        <StyledInput type="text" value={value} onChange={handleOfChange} placeholder="Напишите текст..." />
+        <IconsWrapper>
+          <IconButton>
+            <Image src="paperclip.svg" width={25} height={25} alt="paperclip" />
+          </IconButton>
+          <IconButton>
+            <Image src="audio.svg" width={25} height={25} alt="audio" />
+          </IconButton>
+          <SendButton>
+            <Image src="submit.svg" width={30} height={30} alt="submit" />
+          </SendButton>
+        </IconsWrapper>
+      </InputWrapper>
+    </form>
   );
 };
 
-export default Input;
+export default MessangeInput;

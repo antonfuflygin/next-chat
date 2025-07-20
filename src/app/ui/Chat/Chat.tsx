@@ -1,7 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import Input from '../components/Input';
+import MessangeInput from '../components/MessangeInput';
 import { IChatProps } from './types';
 
 const ChatContent = styled.main`
@@ -12,7 +12,7 @@ const Chat = ({ children }: IChatProps) => {
   return (
     <ChatContent>
       {children}
-      <Input />
+      <MessangeInput />
     </ChatContent>
   );
 };
