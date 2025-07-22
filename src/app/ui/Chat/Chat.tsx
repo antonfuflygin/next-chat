@@ -1,6 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
+import MessangeInput from '../components/MessangeInput';
 import { IChatProps } from './types';
 
 const ChatContent = styled.main`
@@ -8,7 +9,12 @@ const ChatContent = styled.main`
 `;
 
 const Chat = ({ children }: IChatProps) => {
-  return <ChatContent>{children}</ChatContent>;
+  return (
+    <ChatContent>
+      {children}
+      <MessangeInput />
+    </ChatContent>
+  );
 };
 
 export default Chat;
