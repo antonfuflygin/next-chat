@@ -7,7 +7,7 @@ const ChatContent = styled.main`
   width: 70%;
 `;
 
-const Chat = ({ children }: IChatProps) => {
+export const Chat = ({ children }: IChatProps) => {
   return <ChatContent>{children}</ChatContent>;
 };
 
