@@ -8,7 +8,7 @@ import { ILayoutProps } from './types';
 
 const Content = styled.div`
   display: flex;
-  height: 120vh;
+  height: 100vh;
   padding-top: 56px;
 `;
 
