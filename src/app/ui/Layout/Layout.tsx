@@ -9,6 +9,7 @@ import { ILayoutProps } from './types';
 const Content = styled.div`
   display: flex;
   height: 100vh;
+  padding-top: 56px;
 `;
 
 const Layout = ({ children }: ILayoutProps) => {

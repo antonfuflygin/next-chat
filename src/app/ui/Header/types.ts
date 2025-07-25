@@ -7,3 +7,8 @@ export interface IMenuItem {
   title: string;
   patch: string;
 }
+
+export interface IDrawerProps {
+  onToggleDrawer: () => void;
+  children?: React.ReactNode;
+}
