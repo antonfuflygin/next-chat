@@ -2,14 +2,9 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
-import Avatar from '@/common/ui/Avatar/Avatar';
-import CustomLink from '@/common/ui/CustomLink/CustomLink';
 import Drawer from '@/common/ui/Drawer/Drawer';
-
-export interface Props {
-  onToggleDrawer: () => void;
-  children?: React.ReactNode;
-}
+import Avatar from '@/ui/Avatar/Avatar';
+import CustomLink from '@/ui/CustomLink/CustomLink';
 
 const Menu = styled.nav`
   display: flex;
