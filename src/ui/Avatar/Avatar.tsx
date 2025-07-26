@@ -5,7 +5,7 @@ import { IAvatarWrapperProps, TAvatarProps } from './types';
 const AvatarWrapper = styled.div<IAvatarWrapperProps>`
   display: grid;
   min-width: 40px;
-  width: ${(props) => props.width};
+  width: ${(props) => props.width}px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background: #0211251f;
@@ -21,7 +21,13 @@ const AutoAvatar = styled.div`
 const Avatar = ({ src, width, height }: TAvatarProps) => {
   return (
     <AvatarWrapper width={width} height={height}>
-      {src ? <Image src={src} width={width || 40} height={height || 40} alt="avatar" /> : <AutoAvatar>A</AutoAvatar>}
+      {src ? (
+        <Image src={src} width={width || 20} height={height || 20} alt="avatar" />
+      ) : (
+        <AutoAvatar>
+          <Image src="account.svg" width={width || 20} height={height || 20} alt="avatar" />
+        </AutoAvatar>
+      )}
     </AvatarWrapper>
   );
 };

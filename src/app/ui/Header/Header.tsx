@@ -1,8 +1,8 @@
 'use client';
 import Image from 'next/image';
 import styled from 'styled-components';
-import Avatar from '@/common/ui/Avatar/Avatar';
-import CustomLink from '@/common/ui/CustomLink/CustomLink';
+import Avatar from '@/ui/Avatar/Avatar';
+import CustomLink from '@/ui/CustomLink/CustomLink';
 
 const Menu = styled.nav`
   display: flex;
