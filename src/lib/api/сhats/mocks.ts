@@ -1,6 +1,6 @@
-import { IChatListItem } from './types';
+import { IChatListItemType } from './types';
 
-export const mockChatList: IChatListItem[] = [
+export const mockChatList: IChatListItemType[] = [
   {
     id: '1',
     senderName: 'Алексей Иванов',
@@ -140,7 +140,7 @@ export const mockChatList: IChatListItem[] = [
     pinned: true,
   },
 ]
-  .reduce<IChatListItem[][]>((acc, curr) => {
+  .reduce<IChatListItemType[][]>((acc, curr) => {
     if (curr.pinned) {
       if (acc[0]) {
         acc[0].push(curr);

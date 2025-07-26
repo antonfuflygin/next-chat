@@ -1,4 +1,4 @@
-export interface IChatListItem {
+export interface IChatListItemType {
   id: string;
   senderName: string;
   senderAvatar?: string;

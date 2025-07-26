@@ -9,12 +9,12 @@ import {
   StyledInline,
   TagCyrcle,
 } from './ChatListItem.styles';
-import { IChatListItem } from '@/lib/api/сhats/types';
+import { IChatListItemType } from '@/lib/api/сhats/types';
 import { DATE_FORMATS } from '@/lib/const/datetime';
 import Avatar from '@/ui/Avatar/Avatar';
 
 interface IChatListItemProps {
-  chat: IChatListItem;
+  chat: IChatListItemType;
 }
 
 const ChatListItem = ({ chat }: IChatListItemProps) => {
