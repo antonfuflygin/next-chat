@@ -1,0 +1,131 @@
+import { IChatType } from './types';
+
+export const mockChat = (_id: string): IChatType => ({
+  contactId: 'user123',
+  contactName: 'Emma Johnson',
+  contactUserName: 'emma_j',
+  isOnline: true,
+  onlineDateTimeTs: '2023-05-20T14:25:00Z',
+  messages: [
+    {
+      senderId: 'user123',
+      text: 'Привет! Как дела?',
+      datetimeTs: '2023-05-20T10:00:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'me',
+      text: 'Привет! Все отлично, спасибо!',
+      datetimeTs: '2023-05-20T10:02:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'user123',
+      text: 'Что планируешь на выходные?',
+      datetimeTs: '2023-05-20T10:05:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'me',
+      text: 'Пока не решил, может быть поеду за город',
+      datetimeTs: '2023-05-20T10:07:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'user123',
+      text: 'Здорово! Мы с друзьями собираемся в поход',
+      datetimeTs: '2023-05-20T10:10:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'me',
+      text: 'Круто! Куда именно?',
+      datetimeTs: '2023-05-20T10:12:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'user123',
+      text: 'В лесной массив около озера',
+      datetimeTs: '2023-05-20T10:15:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'me',
+      text: 'Будет хорошая погода?',
+      datetimeTs: '2023-05-20T10:18:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'user123',
+      text: 'Да, по прогнозу солнечно',
+      datetimeTs: '2023-05-20T10:20:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'me',
+      text: 'Отличная новость!',
+      datetimeTs: '2023-05-20T10:22:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'user123',
+      text: 'Может присоединишься?',
+      datetimeTs: '2023-05-20T10:25:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'me',
+      text: 'Спасибо за приглашение, подумаю',
+      datetimeTs: '2023-05-20T10:28:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'user123',
+      text: 'Давай до завтра решим',
+      datetimeTs: '2023-05-20T10:30:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'me',
+      text: 'Хорошо, я сообщу',
+      datetimeTs: '2023-05-20T10:32:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'user123',
+      text: 'Какие вещи нужно взять с собой?',
+      datetimeTs: '2023-05-20T13:45:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'me',
+      text: 'Спальник, палатку, еду на 2 дня',
+      datetimeTs: '2023-05-20T13:48:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'user123',
+      text: 'Спасибо за советы!',
+      datetimeTs: '2023-05-20T13:50:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'me',
+      text: 'Не за что, всегда рад помочь',
+      datetimeTs: '2023-05-20T13:52:00Z',
+      hasBeenRead: 'true',
+    },
+    {
+      senderId: 'user123',
+      text: 'Ты уже решил по поводу выходных?',
+      datetimeTs: '2023-05-20T14:20:00Z',
+      hasBeenRead: 'false',
+    },
+    {
+      senderId: 'me',
+      text: 'Да, я с вами!',
+      datetimeTs: '2023-05-20T14:25:00Z',
+      hasBeenRead: 'false',
+    },
+  ],
+});

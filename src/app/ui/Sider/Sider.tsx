@@ -13,8 +13,7 @@ const SiderContent = styled.div`
 `;
 
 export const Sider = () => {
-  const { fetchChatList } = useChats();
-  const { data } = fetchChatList;
+  const { data } = useChats();
 
   return (
     <SiderContent>
