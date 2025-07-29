@@ -2,9 +2,9 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
-import Drawer from '@/common/ui/Drawer/Drawer';
 import Avatar from '@/ui/Avatar/Avatar';
 import CustomLink from '@/ui/CustomLink/CustomLink';
+import Drawer from '@/ui/Drawer/Drawer';
 
 const Menu = styled.nav`
   display: flex;

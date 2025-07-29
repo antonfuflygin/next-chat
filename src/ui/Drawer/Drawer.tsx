@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React from 'react';
+import { FC } from 'react';
 import styled from 'styled-components';
 import { IDrawerProps } from './types';
 
@@ -39,7 +39,7 @@ const CloseButton = styled.button`
   right: 1rem;
 `;
 
-const Drawer: React.FC<IDrawerProps> = ({ isOpen, onClose, children, side = 'right' }) => {
+const Drawer: FC<IDrawerProps> = ({ isOpen, onClose, children, side = 'right' }) => {
   return (
     <>
       <Overlay $isopen={isOpen} />

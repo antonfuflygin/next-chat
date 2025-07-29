@@ -14,7 +14,7 @@ const InputWrapper = styled.div`
   background-color: #fff;
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.textarea`
   flex: 1;
   border: none;
   padding: 12px 8px;
@@ -54,7 +54,7 @@ const SendButton = styled(IconButton)`
 const MessangeInput: React.FC = () => {
   const [value, setValue] = useState<string>('');
 
-  const handleOfChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOfChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
   };
 
@@ -66,7 +66,7 @@ const MessangeInput: React.FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       <InputWrapper>
-        <StyledInput type="text" value={value} onChange={handleOfChange} placeholder="Напишите текст..." />
+        <StyledInput value={value} onChange={handleOfChange} placeholder="Напишите текст..." rows={1} />
         <IconsWrapper>
           <IconButton>
             <Image src="paperclip.svg" width={25} height={25} alt="paperclip" />
