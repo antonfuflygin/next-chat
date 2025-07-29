@@ -1,3 +1,5 @@
+import { PropsWithChildren } from 'react';
+
 export interface IMenuProps {
   items: IMenuItem[];
 }
@@ -8,7 +10,6 @@ export interface IMenuItem {
   patch: string;
 }
 
-export interface IDrawerProps {
+export interface IDrawerProps extends PropsWithChildren {
   onToggleDrawer: () => void;
-  children?: React.ReactNode;
 }
