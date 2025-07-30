@@ -12,15 +12,18 @@ const InputWrapper = styled.div`
   border-radius: 18px;
   width: 100%;
   background-color: #fff;
+  box-shadow: 0px 2px 3px #c1c1c1;
 `;
 
 const StyledInput = styled.textarea`
   flex: 1;
   border: none;
-  padding: 12px 8px;
+  padding: 8px;
   outline: none;
   font-size: 15px;
   background-color: transparent;
+  resize: none;
+  overflow: hidden;
 
   &::placeholder {
     color: #999;
