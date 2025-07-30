@@ -12,6 +12,7 @@ const Content = styled.div`
 
 const Container = styled.div`
   height: 100vh;
+  padding-top: 56px;
 `;
 
 const Layout = ({ children }: ILayoutProps) => {
