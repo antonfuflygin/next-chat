@@ -1,4 +1,5 @@
 export interface IMessageType {
+  messageId: string;
   senderId: string;
   text: string;
   datetimeTs: string;
