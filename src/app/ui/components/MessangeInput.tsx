@@ -8,6 +8,7 @@ const InputWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 5px;
+  margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 18px;
   width: 100%;

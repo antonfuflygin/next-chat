@@ -3,7 +3,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import Chat from '../Chat/Chat';
 import Header from '../Header/Header';
 import Sider from '../Sider/Sider';
-import { ILayoutProps } from './types';
 import { theme } from '@/app/lib/theme/theme';
 
 const Content = styled.div`
@@ -12,17 +11,16 @@ const Content = styled.div`
 
 const Container = styled.div`
   height: 100vh;
-  padding-top: 56px;
 `;
 
-const Layout = ({ children }: ILayoutProps) => {
+const Layout = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container>
         <Header />
         <Content>
           <Sider />
-          <Chat>{children}</Chat>
+          <Chat></Chat>
         </Content>
       </Container>
     </ThemeProvider>
