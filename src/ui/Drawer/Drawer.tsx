@@ -1,45 +1,34 @@
 'use client';
 
 import Image from 'next/image';
-import { FC } from 'react';
-import styled from 'styled-components';
+import { FC, useState } from 'react';
+import Avatar from '../Avatar/Avatar';
+import {
+  Action,
+  CloseButton,
+  Divider,
+  DrawerContainer,
+  HiddenCheckbox,
+  Label,
+  Overlay,
+  Section,
+  Switch,
+  Thumb,
+  ToggleWrapper,
+  UserInfo,
+  Value,
+} from './Drawer.styles';
 import { IDrawerProps } from './types';
+import { useChat } from '@/lib/api/chat/useChats';
 
-const Overlay = styled.div<{ $isopen: boolean }>`
-  position: absolute;
-  inset: 0;
-  opacity: ${({ $isopen }) => ($isopen ? 1 : 0)};
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
-`;
+const Drawer: FC<IDrawerProps> = ({ isOpen, onClose, side = 'right' }) => {
+  const { data } = useChat('1');
 
-const DrawerContainer = styled.div<{ $isopen: boolean; $side: 'left' | 'right' }>`
-  position: fixed;
-  top: 57px;
-  ${({ $side }) => ($side === 'left' ? 'left: 0;' : 'right: 0;')}
-  height: 100%;
-  width: 280px;
-  border-top-left-radius: 16px;
-  background-color: white;
-  box-shadow: ${({ $side }) => ($side === 'left' ? '2px 0 10px rgba(0, 0, 0, 0.2)' : '-2px 0 10px rgba(0, 0, 0, 0.2)')};
-  z-index: 999;
-  padding: 16px 24px;
-  transform: ${({ $isopen, $side }) =>
-    $isopen ? 'translateX(0)' : $side === 'left' ? 'translateX(-100%)' : 'translateX(100%)'};
-  transition: transform 0.3s ease-in-out;
-`;
+  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
-const CloseButton = styled.button`
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-`;
-
-const Drawer: FC<IDrawerProps> = ({ isOpen, onClose, children, side = 'right' }) => {
+  const handleToggle = (checked: boolean) => {
+    setNotificationsEnabled(checked);
+  };
   return (
     <>
       <Overlay $isopen={isOpen} />
@@ -47,7 +36,45 @@ const Drawer: FC<IDrawerProps> = ({ isOpen, onClose, children, side = 'right' })
         <CloseButton onClick={onClose}>
           <Image src="/close.svg" alt="Close" width={24} height={24} />
         </CloseButton>
-        {children}
+        <UserInfo>
+          <Avatar width={20} height={20} />
+          {data?.contactName}
+        </UserInfo>
+
+        <Divider />
+
+        <Section>
+          <Label>Имя пользователя: </Label>
+          <Value>
+            <Action>{data?.contactUserName}</Action>
+          </Value>
+          <Label>О себе: </Label>
+          <Value> Я люблю прогать! </Value>
+        </Section>
+
+        <Divider />
+
+        <Section>
+          <ToggleWrapper>
+            <Label style={{ marginTop: '0' }}>Уведомления</Label>
+            <Switch $checked={notificationsEnabled} aria-label="Notifications">
+              <HiddenCheckbox
+                checked={notificationsEnabled}
+                onChange={(e) => handleToggle(e.target.checked)}
+                aria-label="Notifications"
+              />
+              <Thumb $checked={notificationsEnabled} />
+            </Switch>
+          </ToggleWrapper>
+        </Section>
+
+        <Divider />
+
+        <Section>
+          <Action>Заблокировать пользователя</Action>
+          <Action>Очистить историю</Action>
+          <Action>Удалить контакт</Action>
+        </Section>
       </DrawerContainer>
     </>
   );
