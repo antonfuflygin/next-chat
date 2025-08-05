@@ -1,8 +1,7 @@
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
-export interface IDrawerProps {
+export interface IDrawerProps extends PropsWithChildren {
   isOpen: boolean;
   onClose: () => void;
-  children: ReactNode;
   side?: 'left' | 'right';
 }
