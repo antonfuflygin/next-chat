@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import Avatar from '../Avatar/Avatar';
 import {
   Action,
@@ -21,7 +21,7 @@ import {
 import { IDrawerProps } from './types';
 import { useChat } from '@/lib/api/chat/useChats';
 
-const Drawer: FC<IDrawerProps> = ({ isOpen, onClose, side = 'right' }) => {
+const Drawer = ({ isOpen, onClose, side = 'right' }: IDrawerProps) => {
   const { data } = useChat('1');
 
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
