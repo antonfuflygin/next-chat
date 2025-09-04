@@ -1,3 +1,4 @@
+'use client';
 import cn from 'classnames';
 import { useState } from 'react';
 import s from './helloWorld.module.css';

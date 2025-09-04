@@ -1,8 +1,8 @@
 'use client';
 
 import styled from 'styled-components';
-import MessangeInput from '../components/MessangeInput';
 import { MessageBubble, MessageContainer } from './ui/Message/Message.styles';
+import MessangeInput from './ui/MessageInput/MessangeInput';
 import { useChat } from '@/lib/api/chat/useChats';
 
 const ChatContent = styled.main`
