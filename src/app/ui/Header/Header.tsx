@@ -58,9 +58,7 @@ const Header = () => {
           <Avatar src="" />
         </CustomLink>
       </LinkGroup>
-      <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-        <p>Компонент</p>
-      </Drawer>
+      <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}></Drawer>
     </Menu>
   );
 };
