@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-form": "^1.19.3",
     "@tanstack/react-query": "^5.83.0",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import CustomQueryClientProvider from './lib/providers/CustomQueryProvider';
 import './globals.css';
+import CustomQueryClientProvider from './lib/providers/CustomQueryProvider';
 import CustomThemeProvider from './lib/providers/CustomThemeProvider';
 
 const plusJakartaSans = Roboto({
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${plusJakartaSans.className}`}>
         <CustomQueryClientProvider>
           <CustomThemeProvider>{children}</CustomThemeProvider>
