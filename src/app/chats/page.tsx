@@ -1,7 +1,5 @@
-'use client';
+import { ChatsPage } from '@/views/chats';
 
-import ChatLayout from './Chat/ui/ChatLayout/ChatLayout';
-
-export default function Home() {
-  return <ChatLayout />;
+export default function Page() {
+  return <ChatsPage />;
 }

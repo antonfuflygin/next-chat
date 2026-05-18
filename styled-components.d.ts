@@ -1,4 +1,4 @@
-import { theme } from '@/app/lib/theme/theme';
+import { theme } from '@/shared/config/theme';
 import 'styled-components';
 
 type TCustomThem = typeof theme;
