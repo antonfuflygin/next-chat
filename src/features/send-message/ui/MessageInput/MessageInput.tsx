@@ -1,88 +1,124 @@
 'use client';
 
-import Image from 'next/image';
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import cn from 'classnames';
+import { ArrowBigUpDash, SquarePlus } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useSendMessage } from '@/entities/chat/api/queries';
+import { messageInputPalette } from '@/shared/config/palette';
 
-const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 18px;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0px 2px 3px #c1c1c1;
-`;
+const getFormClassName = (isTextareaExpanded: boolean) =>
+  cn(
+    'flex min-h-15 w-full gap-2 border cursor-text bg-white',
+    isTextareaExpanded ? 'items-start' : 'items-center',
+    messageInputPalette.wrapper
+  );
 
-const StyledInput = styled.textarea`
-  flex: 1;
-  border: none;
-  padding: 8px;
-  outline: none;
-  font-size: 15px;
-  background-color: transparent;
-  resize: none;
-  overflow: hidden;
+const textareaClassName = cn(
+  'min-h-10 max-h-[80vh] flex-1 resize-none overflow-y-auto bg-transparent p-2 text-sm outline-none',
+  messageInputPalette.textarea
+);
 
-  &::placeholder {
-    color: #999;
-  }
-`;
+const iconButtonClassName = cn(
+  'grid size-10 cursor-pointer place-items-center rounded-full transition-colors',
+  messageInputPalette.icon
+);
 
-const IconsWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-`;
+const btnGroupWrapperClassName = 'flex shrink-0 items-center gap-1';
 
-const IconButton = styled.button`
-  background: transparent;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-  color: #444;
-
-  &:hover {
-    color: #000;
-  }
-`;
-
-const SendButton = styled(IconButton)`
-  color: white;
-  border-radius: 50%;
-  padding: 5px;
-`;
+type FormData = {
+  message: string;
+};
 
 const MessageInput: React.FC = () => {
-  const [value, setValue] = useState<string>('');
+  const { register, handleSubmit, reset, watch } = useForm<FormData>({
+    defaultValues: {
+      message: '',
+    },
+  });
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [isTextareaExpanded, setIsTextareaExpanded] = useState(false);
+  const messageValue = watch('message');
+  const { mutateAsync: sendMessage } = useSendMessage('test');
+  const { ref: messageRef, ...messageRegister } = register('message', {
+    required: true,
+  });
 
-  const handleOfChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setValue(e.target.value);
+  useEffect(() => {
+    const textarea = textareaRef.current;
+
+    if (!textarea) {
+      return;
+    }
+
+    const computedStyle = window.getComputedStyle(textarea);
+    const lineHeight = Number.parseFloat(computedStyle.lineHeight);
+    const paddingTop = Number.parseFloat(computedStyle.paddingTop);
+    const paddingBottom = Number.parseFloat(computedStyle.paddingBottom);
+    const singleLineHeight = lineHeight + paddingTop + paddingBottom;
+
+    textarea.style.height = 'auto';
+    setIsTextareaExpanded(textarea.scrollHeight > singleLineHeight + 1);
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }, [messageValue]);
+
+  const onSubmit = async (data: FormData) => {
+    const message = data.message.trim();
+
+    if (!message) {
+      return;
+    }
+
+    await sendMessage(message);
+    reset();
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleWrapperClick = (e: React.MouseEvent<HTMLFormElement>) => {
+    const target = e.target as HTMLElement;
+
+    if (target.closest('button')) {
+      return;
+    }
+
+    textareaRef.current?.focus();
+  };
+
+  const handleTextareaRef = (element: HTMLTextAreaElement | null) => {
+    textareaRef.current = element;
+    messageRef(element);
+  };
+
+  const handleTextareaKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key !== 'Enter' || e.shiftKey) {
+      return;
+    }
+
     e.preventDefault();
-    console.log(value);
+    handleSubmit(onSubmit)();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <InputWrapper>
-        <StyledInput value={value} onChange={handleOfChange} placeholder="Напишите текст..." rows={1} />
-        <IconsWrapper>
-          <IconButton>
-            <Image src="paperclip.svg" width={25} height={25} alt="paperclip" />
-          </IconButton>
-          <IconButton>
-            <Image src="audio.svg" width={25} height={25} alt="audio" />
-          </IconButton>
-          <SendButton>
-            <Image src="submit.svg" width={30} height={30} alt="submit" />
-          </SendButton>
-        </IconsWrapper>
-      </InputWrapper>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={getFormClassName(isTextareaExpanded)}
+      onClick={handleWrapperClick}
+    >
+      <textarea
+        className={textareaClassName}
+        placeholder="Напишите текст..."
+        rows={1}
+        onKeyDown={handleTextareaKeyDown}
+        {...messageRegister}
+        ref={handleTextareaRef}
+      />
+      <div className={btnGroupWrapperClassName}>
+        <button className={iconButtonClassName} type="button" aria-label="Прикрепить файл">
+          <SquarePlus />
+        </button>
+        <button className={iconButtonClassName} type="submit" aria-label="Отправить сообщение">
+          <ArrowBigUpDash />
+        </button>
+      </div>
     </form>
   );
 };

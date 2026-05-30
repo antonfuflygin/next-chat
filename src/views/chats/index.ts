@@ -1,1 +1,1 @@
-export { default as ChatsPage } from './ui/ChatsPage';
+export { default as ChatsPage } from './ui/ChatsView';

@@ -1,66 +1,16 @@
-'use client';
-
 import Image from 'next/image';
-import { useState } from 'react';
-import styled from 'styled-components';
-import { Avatar, CustomLink, Drawer } from '@/shared/ui';
-
-const Menu = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  padding-inline: 24px;
-  box-shadow: 0px 1px 2px 0px #0211251f;
-  height: 56px;
-`;
-
-const Title = styled.h1`
-  font-weight: 600;
-  line-height: 32px;
-  font-size: 20px;
-`;
-
-const TitleWrapper = styled.div`
-  display: flex;
-  gap: 24px;
-`;
-
-const LinkGroup = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-`;
+import { CustomLink } from '@/shared/ui';
 
 const AppHeader = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-  const toggleDrawer = () => setIsDrawerOpen((prev) => !prev);
   return (
-    <Menu>
+    <nav className="fixed inset-x-0 flex h-14 items-center justify-between bg-white px-6 border border-slate-200">
       <CustomLink href="">
-        <TitleWrapper>
+        <div className="flex items-center gap-6">
           <Image src="kinnect-logo.svg" width={32} height={32} alt="logo" />
-          <Title>Kinnect</Title>
-        </TitleWrapper>
+          <h1 className="text-xl font-semibold leading-8 text-slate-950">Kinnect</h1>
+        </div>
       </CustomLink>
-
-      <LinkGroup>
-        <CustomLink href="">
-          <Image src="settings.svg" width={24} height={24} alt="logo" />
-        </CustomLink>
-        <CustomLink href="">
-          <Image src="extends.svg" width={15} height={15} alt="logo" onClick={toggleDrawer} />
-        </CustomLink>
-        <CustomLink href="">
-          <Avatar src="" />
-        </CustomLink>
-      </LinkGroup>
-      <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-        <p>Компонент</p>
-      </Drawer>
-    </Menu>
+    </nav>
   );
 };
 

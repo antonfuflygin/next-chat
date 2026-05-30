@@ -1,5 +1,57 @@
+/* stylelint-disable-next-line import-notation */
+@import "tailwindcss";
+
+body {
+    font-family: var(--font-manrope), sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-weight: 450;
+    line-height: 1.75;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html[data-font="inter"] body {
+    font-family: var(--font-inter), sans-serif;
+}
+
+html[data-font="manrope"] body {
+    font-family: var(--font-manrope), sans-serif;
+}
+
+html[data-font="onest"] body {
+    font-family: var(--font-onest), sans-serif;
+}
+
+html[data-font="nunito-sans"] body {
+    font-family: var(--font-nunito-sans), sans-serif;
+}
+
+html[data-font="roboto"] body {
+    font-family: var(--font-roboto), sans-serif;
+}
+
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    line-height: 1;
+}
+
+.scrollbar-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
 }

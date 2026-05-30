@@ -1,34 +1,22 @@
 import Image from 'next/image';
-import styled from 'styled-components';
-import { IAvatarWrapperProps, TAvatarProps } from './types';
-
-const AvatarWrapper = styled.div<IAvatarWrapperProps>`
-  display: grid;
-  min-width: 40px;
-  width: ${(props) => props.width}px;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  background: #0211251f;
-  padding-bottom: 4px;
-`;
-
-const AutoAvatar = styled.div`
-  margin: auto;
-  color: #fff;
-  font-size: 24px;
-`;
+import { TAvatarProps } from './types';
 
 const Avatar = ({ src, width, height }: TAvatarProps) => {
+  const avatarStyle = width || height ? { width, height } : undefined;
+
   return (
-    <AvatarWrapper width={width} height={height}>
+    <div
+      className="grid size-10 min-w-10 place-items-center overflow-hidden rounded-full bg-slate-200"
+      style={avatarStyle}
+    >
       {src ? (
-        <Image src={src} width={width || 20} height={height || 20} alt="avatar" />
+        <Image className="rounded-full" src={src} width={width || 20} height={height || 20} alt="avatar" />
       ) : (
-        <AutoAvatar>
+        <div className="grid place-items-center">
           <Image src="account.svg" width={width || 20} height={height || 20} alt="avatar" />
-        </AutoAvatar>
+        </div>
       )}
-    </AvatarWrapper>
+    </div>
   );
 };
 
