@@ -1,54 +1,31 @@
 'use client';
 
+import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
-import styled from 'styled-components';
 import { IDrawerProps } from './types';
 
-const Overlay = styled.div<{ $isopen: boolean }>`
-  position: absolute;
-  inset: 0;
-  opacity: ${({ $isopen }) => ($isopen ? 1 : 0)};
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
-`;
-
-const DrawerContainer = styled.div<{ $isopen: boolean; $side: 'left' | 'right' }>`
-  position: fixed;
-  top: 57px;
-  ${({ $side }) => ($side === 'left' ? 'left: 0;' : 'right: 0;')}
-  height: 100%;
-  width: 280px;
-  border-top-left-radius: 16px;
-  background-color: white;
-  box-shadow: ${({ $side }) => ($side === 'left' ? '2px 0 10px rgba(0, 0, 0, 0.2)' : '-2px 0 10px rgba(0, 0, 0, 0.2)')};
-  z-index: 999;
-  padding: 16px 24px;
-  transform: ${({ $isopen, $side }) =>
-    $isopen ? 'translateX(0)' : $side === 'left' ? 'translateX(-100%)' : 'translateX(100%)'};
-  transition: transform 0.3s ease-in-out;
-`;
-
-const CloseButton = styled.button`
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-`;
-
 const Drawer: FC<IDrawerProps> = ({ isOpen, onClose, children, side = 'right' }) => {
+  const drawerClassName = classNames(
+    'fixed top-14 bottom-0 z-50 w-72 bg-white px-6 py-4 shadow-lg transition-transform duration-300',
+    side === 'left' ? 'left-0 rounded-tr-2xl' : 'right-0 rounded-tl-2xl',
+    isOpen ? 'translate-x-0' : side === 'left' ? '-translate-x-full' : 'translate-x-full'
+  );
+
   return (
     <>
-      <Overlay $isopen={isOpen} />
-      <DrawerContainer $isopen={isOpen} $side={side}>
-        <CloseButton onClick={onClose}>
+      <div
+        className={classNames(
+          'pointer-events-none absolute inset-0 transition-opacity duration-300',
+          isOpen ? 'opacity-100' : 'opacity-0'
+        )}
+      />
+      <div className={drawerClassName}>
+        <button className="absolute right-4 top-4 cursor-pointer bg-transparent" type="button" onClick={onClose}>
           <Image src="/close.svg" alt="Close" width={24} height={24} />
-        </CloseButton>
+        </button>
         {children}
-      </DrawerContainer>
+      </div>
     </>
   );
 };

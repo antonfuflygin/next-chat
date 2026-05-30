@@ -3,8 +3,10 @@ import { Roboto } from 'next/font/google';
 import './globals.css';
 import { AppProviders } from './providers';
 
-const plusJakartaSans = Roboto({
+const roboto = Roboto({
   subsets: ['latin', 'cyrillic'],
+  variable: '--font-roboto',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -18,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${plusJakartaSans.className}`}>
+    <html lang="ru" data-font="roboto">
+      <body className={`${roboto.variable}`}>
         <AppProviders>{children}</AppProviders>
       </body>
     </html>
