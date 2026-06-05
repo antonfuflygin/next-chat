@@ -36,6 +36,12 @@ const eslintConfig = [
       ],
     },
   }),
+  {
+    files: ['cypress/**/*.ts', 'cypress/**/*.tsx'],
+    rules: {
+      '@typescript-eslint/no-namespace': 'off',
+    },
+  },
 ];
 
 export default eslintConfig;

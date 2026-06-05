@@ -1,11 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { IChatType } from '../model/types';
-import { mockChat, mockChatList } from './mocks';
+import { fetchChat } from './client';
+import { mockChatList } from './mocks';
 
 export const useChat = (id: string) => {
   return useQuery({
     queryKey: ['chat'],
-    queryFn: () => mockChat(id),
+    queryFn: () => fetchChat(id),
   });
 };
 
