@@ -24,3 +24,9 @@ export interface IChatListItemType {
   pinned?: boolean;
   newMessageCount?: number;
 }
+
+export interface IChatResponseType {
+  success: boolean;
+  errors: string;
+  data: IChatType;
+}

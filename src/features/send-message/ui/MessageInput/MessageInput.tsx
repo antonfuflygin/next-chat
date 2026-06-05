@@ -9,13 +9,13 @@ import { messageInputPalette } from '@/shared/config/palette';
 
 const getFormClassName = (isTextareaExpanded: boolean) =>
   cn(
-    'flex min-h-15 w-full gap-2 border cursor-text bg-white',
+    'flex min-h-15 w-full shrink-0 gap-2 border cursor-text bg-white',
     isTextareaExpanded ? 'items-start' : 'items-center',
     messageInputPalette.wrapper
   );
 
 const textareaClassName = cn(
-  'min-h-10 max-h-[80vh] flex-1 resize-none overflow-y-auto bg-transparent p-2 text-sm outline-none',
+  'min-h-10 w-full flex-1 resize-none overflow-y-hidden bg-transparent p-2 text-sm outline-none',
   messageInputPalette.textarea
 );
 
@@ -24,7 +24,7 @@ const iconButtonClassName = cn(
   messageInputPalette.icon
 );
 
-const btnGroupWrapperClassName = 'flex shrink-0 items-center gap-1';
+const btnGroupWrapperClassName = cn('flex shrink-0 items-center gap-1');
 
 type FormData = {
   message: string;
@@ -72,6 +72,8 @@ const MessageInput: React.FC = () => {
     await sendMessage(message);
     reset();
   };
+
+  console.log(isTextareaExpanded)
 
   const handleWrapperClick = (e: React.MouseEvent<HTMLFormElement>) => {
     const target = e.target as HTMLElement;
